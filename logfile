@@ -1,4 +1,4 @@
-#define inputpin  10
+#define greenLed  7
 
 void setup()
 {
