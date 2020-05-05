@@ -1,0 +1,32 @@
+#define inputpin  10
+
+void setup()
+{
+  pinMode(inputpin, INPUT_PULLUP);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  unsigned long currenttime1, currenttime2,delaytime;
+  float Energy;
+  if (digitalRead(inputpin) == HIGH)
+  {
+    currenttime1 = millis();
+//    Serial.print(currenttime1);
+//    Serial.print(" | ");
+    while (1)
+    {
+      if (digitalRead(inputpin) == LOW)
+      {
+        currenttime2 = millis();
+//        Serial.println(currenttime2);
+        delaytime = currenttime2 - currenttime1;
+        Energy = 24*delaytime/1000;          //the unit of Energy is mw.
+        Serial.println(Energy);
+        break;
+      }
+    }
+  }
+}
+
